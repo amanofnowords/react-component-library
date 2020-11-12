@@ -1,17 +1,18 @@
 import resolve from '@rollup/plugin-node-resolve'
-import babel from 'rollup-plugin-babel'
+// import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
 import json from '@rollup/plugin-json'
-import css from 'rollup-plugin-import-css'
+// import css from 'rollup-plugin-import-css'
 const packageJSON = require('./package.json')
 
 export default {
-  input: 'src/main.js',
+  input: './typescript/main.js',
   output: [
     {
       file: packageJSON.main,
-      format: 'cjs'
+      format: 'cjs',
+      exports: 'named'
     },
     {
       file: packageJSON.module,
@@ -19,10 +20,10 @@ export default {
     }
   ],
   plugins: [
-    babel({
-      extensions: ['.jsx', '.js'],
-      exclude: 'node_modules/**'
-    }),
+    // babel({
+    //   extensions: ['.js'],
+    //   exclude: 'node_modules/**'
+    // }),
     external(),
     resolve(),
     commonjs(),
