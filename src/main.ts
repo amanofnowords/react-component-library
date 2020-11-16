@@ -1,10 +1,8 @@
 // import TextInput from './TextInput/index.jsx'
 // import RadioSelect from './RadioSelect/index.jsx'
-import {text, SpecialFunction} from './TextInput/index';
+import {TextInput} from './TextInput/index';
 
 export { 
-    // TextInput, 
+    TextInput, 
     // RadioSelect, 
-    text,
-    SpecialFunction
 }

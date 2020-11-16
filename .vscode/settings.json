@@ -3,5 +3,6 @@
         "downlevel",
         "tslib",
         "typechecking"
-    ]
+    ],
+    "editor.formatOnSave": true
 }

@@ -18,43 +18,86 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var TextInput = createCommonjsModule(function (module, exports) {
-var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var TextInput_1 = createCommonjsModule(function (module, exports) {
+var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SpecialFunction = exports.text = void 0;
-const react_1 = __importDefault(react__default['default']);
-const text = {
-    message: 'Matthew fixing dev aye run both',
-    id: 2
+exports.TextInput = void 0;
+const React = __importStar(react__default['default']);
+const regexOptions = {
+    personName: /^[a-zA-Z]+$/,
+    email: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
+    postalCode: /^[a-zA-Z0-9äöüÄÖÜ]*$/
 };
-exports.text = text;
-const SpecialFunction = () => {
-    console.log('Message Here', text.message);
-    return react_1.default.createElement("p", null, text.message);
+const TextInput = ({ inputID, value, placeholder = 'Please Enter Value Here', label = 'Text Input: ', containerClassName = '', validate = false, regexType = 'personName', customRegex, errorMessage = 'Error: Please check value', onChangeCallback = undefined, inputAttributes, labelAttributes, errorMessageAttributes }) => {
+    const [inputValue, setInputValue] = React.useState(value);
+    /** Takes in a value an checks to make sure it passes */
+    const validateInput = (passedValue) => {
+        let regex = regexOptions[regexType];
+        customRegex ? (regex = customRegex) : regex;
+        let isValid = regex.test(passedValue);
+        return isValid;
+    };
+    if (validate === true) {
+        var [errorExist, setError] = React.useState(!validateInput(inputValue));
+    }
+    const onInputValueChange = (e) => {
+        setInputValue(e.target.value);
+        let isValid = validateInput(e.target.value);
+        // Validation check 
+        if (validate === true) {
+            setError(!isValid);
+        }
+        if (onChangeCallback !== undefined) {
+            let params = {
+                event: e,
+                value: e.target.value,
+                validate: validate ? isValid : undefined,
+            };
+            onChangeCallback(params);
+        }
+    };
+    return (React.createElement("div", { className: `text-input ${containerClassName}` },
+        React.createElement("label", Object.assign({ htmlFor: inputID }, labelAttributes), label),
+        React.createElement("input", Object.assign({ type: 'text', id: inputID, placeholder: placeholder, value: inputValue }, inputAttributes, { onChange: e => {
+                onInputValueChange(e);
+            } })),
+        errorExist === true && (React.createElement("p", Object.assign({ className: 'errorMessage' }, errorMessageAttributes), errorMessage))));
 };
-exports.SpecialFunction = SpecialFunction;
+exports.TextInput = TextInput;
 });
 
-unwrapExports(TextInput);
-var TextInput_1 = TextInput.SpecialFunction;
-var TextInput_2 = TextInput.text;
+unwrapExports(TextInput_1);
+var TextInput_2 = TextInput_1.TextInput;
 
 var main = createCommonjsModule(function (module, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SpecialFunction = exports.text = void 0;
+exports.TextInput = void 0;
 // import TextInput from './TextInput/index.jsx'
 // import RadioSelect from './RadioSelect/index.jsx'
 
-Object.defineProperty(exports, "text", { enumerable: true, get: function () { return TextInput.text; } });
-Object.defineProperty(exports, "SpecialFunction", { enumerable: true, get: function () { return TextInput.SpecialFunction; } });
+Object.defineProperty(exports, "TextInput", { enumerable: true, get: function () { return TextInput_1.TextInput; } });
 });
 
 var main$1 = unwrapExports(main);
-var main_1 = main.SpecialFunction;
-var main_2 = main.text;
+var main_1 = main.TextInput;
 
-exports.SpecialFunction = main_1;
+exports.TextInput = main_1;
 exports.default = main$1;
-exports.text = main_2;
