@@ -1,4 +1,6 @@
 import * as React from "react";
+import { UserEvent } from "../resources/types.js"
+import { TextInputProps } from "./TextInput.types.js"
 
 const regexOptions: any = {
   personName: /^[a-zA-Z]+$/,
@@ -6,25 +8,10 @@ const regexOptions: any = {
   postalCode: /^[a-zA-Z0-9äöüÄÖÜ]*$/
 }
 
-type TextInputProps = {
-  inputID?: string,
-  value?: string | number,
-  placeholder?: string,
-  label?: string,
-  containerClassName?: string,
-  validate?: boolean,
-  regexType?: string,
-  customRegex?: string | RegExp,
-  errorMessage?: string,
-  onChangeCallback?: Function,
-  inputAttributes?: object,
-  labelAttributes?: object,
-  errorMessageAttributes?: object
-}
-const TextInput: Function = ({
+const TextInput: React.FC<TextInputProps> = ({
   inputID,
   value,
-  placeholder = 'Please Enter Value Here',
+  placeholder = 'Please Enter Value',
   label = 'Text Input: ',
   containerClassName = '',
   validate = false,
@@ -35,15 +22,7 @@ const TextInput: Function = ({
   inputAttributes,
   labelAttributes,
   errorMessageAttributes
-}: TextInputProps): JSX.Element => {
-  type Event = {
-    preventDefault: Function,
-    target: Target
-  }
-  type Target = {
-    value: string,
-    id: string,
-  }
+}) => {
   const [inputValue, setInputValue] = React.useState<string | number | undefined>(value)
 
   /** Takes in a value an checks to make sure it passes */
@@ -57,7 +36,7 @@ const TextInput: Function = ({
   if (validate === true) {
     var [errorExist, setError] = React.useState<boolean>(!validateInput(inputValue))
   }
-  const onInputValueChange: Function = (e: Event) => {
+  const onInputValueChange: Function = (e: UserEvent) => {
     setInputValue(e.target.value);
     let isValid: boolean = validateInput(e.target.value);
 

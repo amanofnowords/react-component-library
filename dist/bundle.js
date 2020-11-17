@@ -2,51 +2,14 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var react = require('react');
+var React = require('react');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-var react__default = /*#__PURE__*/_interopDefaultLegacy(react);
-
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-var TextInput_1 = createCommonjsModule(function (module, exports) {
-var __createBinding = (commonjsGlobal && commonjsGlobal.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (commonjsGlobal && commonjsGlobal.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (commonjsGlobal && commonjsGlobal.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TextInput = void 0;
-const React = __importStar(react__default['default']);
 const regexOptions = {
     personName: /^[a-zA-Z]+$/,
     email: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
     postalCode: /^[a-zA-Z0-9äöüÄÖÜ]*$/
 };
-const TextInput = ({ inputID, value, placeholder = 'Please Enter Value Here', label = 'Text Input: ', containerClassName = '', validate = false, regexType = 'personName', customRegex, errorMessage = 'Error: Please check value', onChangeCallback = undefined, inputAttributes, labelAttributes, errorMessageAttributes }) => {
+const TextInput = ({ inputID, value, placeholder = 'Please Enter Value', label = 'Text Input: ', containerClassName = '', validate = false, regexType = 'personName', customRegex, errorMessage = 'Error: Please check value', onChangeCallback = undefined, inputAttributes, labelAttributes, errorMessageAttributes }) => {
     const [inputValue, setInputValue] = React.useState(value);
     /** Takes in a value an checks to make sure it passes */
     const validateInput = (passedValue) => {
@@ -81,23 +44,5 @@ const TextInput = ({ inputID, value, placeholder = 'Please Enter Value Here', la
             } })),
         errorExist === true && (React.createElement("p", Object.assign({ className: 'errorMessage' }, errorMessageAttributes), errorMessage))));
 };
+
 exports.TextInput = TextInput;
-});
-
-unwrapExports(TextInput_1);
-var TextInput_2 = TextInput_1.TextInput;
-
-var main = createCommonjsModule(function (module, exports) {
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TextInput = void 0;
-// import TextInput from './TextInput/index.jsx'
-// import RadioSelect from './RadioSelect/index.jsx'
-
-Object.defineProperty(exports, "TextInput", { enumerable: true, get: function () { return TextInput_1.TextInput; } });
-});
-
-var main$1 = unwrapExports(main);
-var main_1 = main.TextInput;
-
-exports.TextInput = main_1;
-exports.default = main$1;
