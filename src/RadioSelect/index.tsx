@@ -14,7 +14,7 @@ export const RadioSelect: React.FC<RadioSelectProps> = ({ options, groupName, op
     }
 
     const renderOption: Function = () => {
-        return options.map((option, index: number): JSX.Element => {
+        return options.map((option: Option, index: number): JSX.Element => {
             return <div
                 className={`radioSelectOption ${isThisSelected(option.value) ? 'selected' : ''}`}
                 key={index}
