@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { RadioSelectProps, Option } from './RadioSelect.types.js'
+import './RadioSelect.scss'
+
 
 export const RadioSelect: React.FC<RadioSelectProps> = ({ options, groupName, optionSelected, selectCallBack }) => {
 

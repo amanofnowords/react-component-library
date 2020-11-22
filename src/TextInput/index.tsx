@@ -1,7 +1,8 @@
 import * as React from "react";
+import { TextInputProps } from "./TextInput.types.js"
 import { UserEvent } from "../resources/types.js"
 import { regexOptions } from "../resources/regExp.js"
-import { TextInputProps } from "./TextInput.types.js"
+import './TextInput.scss'
 
 const TextInput: React.FC<TextInputProps> = ({
   inputID,
