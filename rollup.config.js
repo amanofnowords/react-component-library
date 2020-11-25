@@ -1,10 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve'
-// import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
 import json from '@rollup/plugin-json'
 import typescript from 'rollup-plugin-typescript2'
-// import css from 'rollup-plugin-import-css'
+import postcss from 'rollup-plugin-postcss'
 const packageJSON = require('./package.json')
 
 export default {
@@ -21,15 +20,11 @@ export default {
     }
   ],
   plugins: [
-    // babel({
-    //   extensions: ['.js'],
-    //   exclude: 'node_modules/**'
-    // }),
     external(),
     resolve(),
     commonjs(),
     typescript({useTsconfigDeclarationDir: true}),
-    json()
-    // css()
+    json(),
+    postcss()
   ]
 }

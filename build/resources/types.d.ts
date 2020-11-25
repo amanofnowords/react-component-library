@@ -1,3 +1,4 @@
+/** Reusable Types Live Here */
 /** This represents the event object that gets emitted when an event fires  */
 declare type UserEvent = {
     preventDefault: Function;
@@ -5,7 +6,7 @@ declare type UserEvent = {
 };
 /** The target of an event */
 declare type Target = {
-    value: string;
+    value: string | number;
     id: string;
 };
 export { UserEvent };
