@@ -1,1 +1,18 @@
+.radioSelectOption {
+    padding: 10px;
+    width: fit-content;
+    input,
+    label {
+        cursor: pointer;
+        &:hover {
+            font-size: 1.1em;
+        }
+    }
+    input {
+        display: none;
+    }
 
+    &.selected {
+        border: 1px solid black;
+    }
+}

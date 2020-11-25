@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { RadioSelectProps, Option } from './RadioSelect.types.js'
+import '../main.scss'
 import './RadioSelect.scss'
 
 
-export const RadioSelect: React.FC<RadioSelectProps> = ({ options, groupName, optionSelected, selectCallBack }) => {
+export const RadioSelect: React.FC<RadioSelectProps> = ({ title, options, groupName, optionSelected, selectCallBack }) => {
 
     const [optionSelectedState, changeOptionSelectedState] = React.useState<string>(optionSelected)
     const isThisSelected: Function = (value: string): boolean => {
@@ -22,6 +23,7 @@ export const RadioSelect: React.FC<RadioSelectProps> = ({ options, groupName, op
                 key={index}
                 onClick={(e) => handleClick(groupName, option)}
             >
+
                 <input type="radio"
                     id={option.value}
                     name={groupName}
@@ -34,5 +36,8 @@ export const RadioSelect: React.FC<RadioSelectProps> = ({ options, groupName, op
 
         })
     }
-    return <div>{options ? renderOption(options) : undefined}</div>
+    return <div className="radioSelectWrapper">
+        <p>{title}</p>
+        {options ? renderOption(options) : undefined}
+    </div>
 }

@@ -31,10 +31,13 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = "";
+var css_248z = "* {\n  box-sizing: border-box;\n  font-family: Arial, sans-serif;\n  font-size: 16px; }\n";
 styleInject(css_248z);
 
-const RadioSelect = ({ options, groupName, optionSelected, selectCallBack }) => {
+var css_248z$1 = ".radioSelectOption {\n  padding: 10px;\n  width: fit-content; }\n  .radioSelectOption input,\n  .radioSelectOption label {\n    cursor: pointer; }\n    .radioSelectOption input:hover,\n    .radioSelectOption label:hover {\n      font-size: 1.1em; }\n  .radioSelectOption input {\n    display: none; }\n  .radioSelectOption.selected {\n    border: 1px solid black; }\n";
+styleInject(css_248z$1);
+
+const RadioSelect = ({ title, options, groupName, optionSelected, selectCallBack }) => {
     const [optionSelectedState, changeOptionSelectedState] = React.useState(optionSelected);
     const isThisSelected = (value) => {
         return value === optionSelectedState ? true : false;
@@ -50,7 +53,9 @@ const RadioSelect = ({ options, groupName, optionSelected, selectCallBack }) => 
                 React.createElement("label", { htmlFor: option.value }, option.name));
         });
     };
-    return React.createElement("div", null, options ? renderOption() : undefined);
+    return React.createElement("div", { className: "radioSelectWrapper" },
+        React.createElement("p", null, title),
+        options ? renderOption() : undefined);
 };
 
 const regexOptions = {
@@ -59,10 +64,10 @@ const regexOptions = {
     postalCode: /^[a-zA-Z0-9äöüÄÖÜ]*$/
 };
 
-var css_248z$1 = "";
-styleInject(css_248z$1);
+var css_248z$2 = ".text-input {\n  position: relative;\n  width: fit-content; }\n  .text-input input {\n    background-color: white;\n    border: none;\n    border-bottom: 1px solid black;\n    padding: 5px; }\n    .text-input input:focus {\n      border: 1px solid black;\n      outline: none; }\n  .text-input.error input {\n    border: 1px solid red; }\n  .text-input .errorMessage {\n    color: red;\n    text-align: right; }\n";
+styleInject(css_248z$2);
 
-const TextInput = ({ inputID, value, placeholder = 'Please Enter Value', label = 'Text Input: ', containerClassName = '', validate = false, regexType = 'personName', customRegex, errorMessage = 'Error: Please check value', onChangeCallback = undefined, inputAttributes, labelAttributes, errorMessageAttributes }) => {
+const TextInput = ({ inputID, value = '', placeholder = 'Please Enter Value', label = 'Text Input: ', containerClassName = '', validate = false, regexType = 'personName', customRegex, errorMessage = 'Error: Please Check Value', onChangeCallback = undefined, inputAttributes, labelAttributes, errorMessageAttributes }) => {
     const [inputValue, setInputValue] = React.useState(value);
     /** Takes in a value an checks to make sure it passes */
     const validateInput = (passedValue) => {
@@ -90,7 +95,7 @@ const TextInput = ({ inputID, value, placeholder = 'Please Enter Value', label =
             onChangeCallback(params);
         }
     };
-    return (React.createElement("div", { className: `text-input ${containerClassName}` },
+    return (React.createElement("div", { className: `text-input ${containerClassName} ${errorExist ? 'error' : ''}` },
         React.createElement("label", Object.assign({ htmlFor: inputID }, labelAttributes), label),
         React.createElement("input", Object.assign({ type: 'text', id: inputID, placeholder: placeholder, value: inputValue }, inputAttributes, { onChange: e => {
                 onInputValueChange(e);

@@ -4,8 +4,9 @@ export type Option = {
     value: string;
 }
 export type RadioSelectProps = {
-    options: Option[];
     groupName: string;
+    title: string;
+    options: Option[];
     optionSelected: string;
     selectCallBack: Function;
 }
