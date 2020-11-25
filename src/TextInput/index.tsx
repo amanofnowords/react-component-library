@@ -1,26 +1,26 @@
-import * as React from "react";
-import { TextInputProps } from "./TextInput.types.js"
-import { UserEvent } from "../resources/types.js"
-import { regexOptions } from "../resources/regExp.js"
-import '../main.scss'
-import './TextInput.scss'
+import * as React from 'react';
+import { TextInputProps } from './TextInput.types.js';
+import { UserEvent } from '../resources/types';
+import { regexOptions } from '../resources/regExp';
+import '../main.scss';
+import './TextInput.scss';
 
 const TextInput: React.FC<TextInputProps> = ({
-  inputID,
-  value = '',
-  placeholder = 'Please Enter Value',
-  label = 'Text Input: ',
-  containerClassName = '',
-  validate = false,
-  regexType = 'personName',
-  customRegex,
-  errorMessage = 'Error: Please Check Value',
-  onChangeCallback = undefined,
-  inputAttributes,
-  labelAttributes,
-  errorMessageAttributes
+    inputID,
+    value = '',
+    placeholder = 'Please Enter Value',
+    label = 'Text Input: ',
+    containerClassName = '',
+    validate = false,
+    regexType = 'personName',
+    customRegex,
+    errorMessage = 'Error: Please Check Value',
+    onChangeCallback = undefined,
+    inputAttributes,
+    labelAttributes,
+    errorMessageAttributes,
 }) => {
-  const [inputValue, setInputValue] = React.useState<string | number>(value)
+    const [inputValue, setInputValue] = React.useState<string | number>(value);
 
     /** Takes in a value an checks to make sure it passes */
     const validateInput: Function = (passedValue: string | number): boolean => {
@@ -57,20 +57,20 @@ const TextInput: React.FC<TextInputProps> = ({
     };
 
     return (
-      <div className={`text-input ${containerClassName} ${errorExist ? 'error' : ''}`}>
-        <label htmlFor={inputID} {...labelAttributes}>
-          {label}
-        </label>
-        <input
-          type='text'
-          id={inputID}
-          placeholder={placeholder}
-          value={inputValue}
-          {...inputAttributes}
-          onChange={e => {
-            onInputValueChange(e)
-          }}
-        />
+        <div className={`text-input ${containerClassName} ${errorExist ? 'error' : ''}`}>
+            <label htmlFor={inputID} {...labelAttributes}>
+                {label}
+            </label>
+            <input
+                type="text"
+                id={inputID}
+                placeholder={placeholder}
+                value={inputValue}
+                {...inputAttributes}
+                onChange={(e) => {
+                    onInputValueChange(e);
+                }}
+            />
 
             {errorExist === true && (
                 <p className="errorMessage" {...errorMessageAttributes}>
