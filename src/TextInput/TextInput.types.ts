@@ -2,7 +2,7 @@ export type TextInputProps = {
   inputID?: string;
   value?: string | number;
   placeholder?: string;
-  label?: string;
+  label?: string | number | null;
   containerClassName?: string;
   validate?: boolean;
   regexType?: string;

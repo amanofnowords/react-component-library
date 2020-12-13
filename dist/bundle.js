@@ -67,7 +67,8 @@ const regexOptions = {
 var css_248z$2 = ".text-input {\n  position: relative;\n  width: fit-content; }\n  .text-input input {\n    background-color: white;\n    border: none;\n    border-bottom: 1px solid black;\n    padding: 5px; }\n    .text-input input:focus {\n      border: 1px solid black;\n      outline: none; }\n  .text-input.error input {\n    border: 1px solid red; }\n  .text-input .errorMessage {\n    color: red;\n    text-align: right; }\n";
 styleInject(css_248z$2);
 
-const TextInput = ({ inputID, value = '', placeholder = 'Please Enter Value', label = 'Text Input: ', containerClassName = '', validate = false, regexType = 'personName', customRegex, errorMessage = 'Error: Please Check Value', onChangeCallback = undefined, inputAttributes, labelAttributes, errorMessageAttributes }) => {
+const TextInput = ({ inputID, value = '', placeholder = 'Please Enter Value', label = "Text Input:", containerClassName = '', validate = false, regexType = 'personName', customRegex, errorMessage = 'Error: Please Check Value', onChangeCallback = undefined, inputAttributes, labelAttributes, errorMessageAttributes, }) => {
+    //** Text Input Value State. Default is empty string */
     const [inputValue, setInputValue] = React.useState(value);
     /** Takes in a value an checks to make sure it passes */
     const validateInput = (passedValue) => {
@@ -82,7 +83,7 @@ const TextInput = ({ inputID, value = '', placeholder = 'Please Enter Value', la
     const onInputValueChange = (e) => {
         setInputValue(e.target.value);
         let isValid = validateInput(e.target.value);
-        // Validation check 
+        // Validation check
         if (validate === true) {
             setError(!isValid);
         }
@@ -96,11 +97,11 @@ const TextInput = ({ inputID, value = '', placeholder = 'Please Enter Value', la
         }
     };
     return (React.createElement("div", { className: `text-input ${containerClassName} ${errorExist ? 'error' : ''}` },
-        React.createElement("label", Object.assign({ htmlFor: inputID }, labelAttributes), label),
-        React.createElement("input", Object.assign({ type: 'text', id: inputID, placeholder: placeholder, value: inputValue }, inputAttributes, { onChange: e => {
+        label !== null && React.createElement("label", Object.assign({ htmlFor: inputID }, labelAttributes), label),
+        React.createElement("input", Object.assign({ type: "text", id: inputID, placeholder: placeholder, value: inputValue }, inputAttributes, { onChange: (e) => {
                 onInputValueChange(e);
             } })),
-        errorExist === true && (React.createElement("p", Object.assign({ className: 'errorMessage' }, errorMessageAttributes), errorMessage))));
+        errorExist === true && (React.createElement("p", Object.assign({ className: "errorMessage" }, errorMessageAttributes), errorMessage))));
 };
 
 exports.RadioSelect = RadioSelect;

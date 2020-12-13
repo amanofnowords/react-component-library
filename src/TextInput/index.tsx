@@ -9,7 +9,7 @@ const TextInput: React.FC<TextInputProps> = ({
     inputID,
     value = '',
     placeholder = 'Please Enter Value',
-    label = 'Text Input: ',
+    label = "Text Input:",
     containerClassName = '',
     validate = false,
     regexType = 'personName',
@@ -20,6 +20,8 @@ const TextInput: React.FC<TextInputProps> = ({
     labelAttributes,
     errorMessageAttributes,
 }) => {
+
+    //** Text Input Value State. Default is empty string */
     const [inputValue, setInputValue] = React.useState<string | number>(value);
 
     /** Takes in a value an checks to make sure it passes */
@@ -58,9 +60,10 @@ const TextInput: React.FC<TextInputProps> = ({
 
     return (
         <div className={`text-input ${containerClassName} ${errorExist ? 'error' : ''}`}>
-            <label htmlFor={inputID} {...labelAttributes}>
+            {label !== null && <label htmlFor={inputID} {...labelAttributes}>
                 {label}
             </label>
+            }
             <input
                 type="text"
                 id={inputID}
