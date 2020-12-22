@@ -4,5 +4,8 @@
         "tslib",
         "typechecking"
     ],
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "cSpell.ignoreWords": [
+        "viewports"
+    ]
 }

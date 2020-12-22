@@ -10,6 +10,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "storybook": "start-storybook -p 6006",
+    "storybook:docs": "start-storybook --docs",
+    "storybook:docs-publish": "build-storybook --docs",
     "build-storybook": "build-storybook"
   },
   "keywords": [

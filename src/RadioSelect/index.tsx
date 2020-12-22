@@ -4,16 +4,31 @@ import '../main.scss'
 import './RadioSelect.scss'
 
 
-export const RadioSelect: React.FC<RadioSelectProps> = ({ title, options, groupName, optionSelected, selectCallBack }) => {
+const RadioSelect: React.FC<RadioSelectProps> = ({
+    title = 'Select Option Below',
+    options = [
+        { name: 'Default Option 1', value: 'defaultOption1' },
+        { name: 'Default Option 2', value: 'defaultOption2' },
+        { name: 'Default Option 3', value: 'defaultOption3' }
+    ],
+    groupName,
+    optionSelected,
+    selectCallback,
+    containerClassName = 'radioSelectWrapper'
+}) => {
 
+    // Initialize option selected state
     const [optionSelectedState, changeOptionSelectedState] = React.useState<string>(optionSelected)
+
+    // Function to compare and check if an option has been selected
     const isThisSelected: Function = (value: string): boolean => {
         return value === optionSelectedState ? true : false
     }
 
+    // Click Handler
     const handleClick: Function = (groupName: string, option: Option): void => {
         changeOptionSelectedState(option.value)
-        selectCallBack(groupName, option)
+        selectCallback(groupName, option)
     }
 
     const renderOption: Function = () => {
@@ -36,8 +51,10 @@ export const RadioSelect: React.FC<RadioSelectProps> = ({ title, options, groupN
 
         })
     }
-    return <div className="radioSelectWrapper">
+    return <div className={containerClassName}>
         <p>{title}</p>
         {options ? renderOption(options) : undefined}
     </div>
 }
+
+export { RadioSelect }
