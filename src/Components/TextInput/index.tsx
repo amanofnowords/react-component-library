@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { TextInputProps } from './TextInput.types.js';
-import { UserEvent } from '../resources/types';
-import { regexOptions } from '../resources/regExp';
-import '../main.scss';
+import { UserEvent } from '../../resources/types';
+import { regexOptions } from '../../resources/regExp';
+import '../../main.scss';
 import './TextInput.scss';
 
 const TextInput: React.FC<TextInputProps> = ({

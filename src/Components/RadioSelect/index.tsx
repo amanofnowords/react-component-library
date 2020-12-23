@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RadioSelectProps, Option } from './RadioSelect.types.js'
-import '../main.scss'
+import '../../main.scss'
 import './RadioSelect.scss'
 
 
