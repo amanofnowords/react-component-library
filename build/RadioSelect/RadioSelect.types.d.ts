@@ -7,5 +7,6 @@ export declare type RadioSelectProps = {
     title: string;
     options: Option[];
     optionSelected: string;
-    selectCallBack: Function;
+    selectCallback: Function;
+    containerClassName: string;
 };

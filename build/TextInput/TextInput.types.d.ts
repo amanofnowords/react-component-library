@@ -1,6 +1,6 @@
 export declare type TextInputProps = {
     inputID?: string;
-    value?: string | number;
+    value?: string;
     placeholder?: string;
     label?: string | number | null;
     containerClassName?: string;
