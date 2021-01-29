@@ -1,8 +1,9 @@
 export type TextInputProps = {
-  inputID?: string;
-  value?: string;
+  componentID: string;
+  value?: string ;
   placeholder?: string;
   label?: string | number | null;
+  name?: string;
   containerClassName?: string;
   validate?: boolean;
   regexType?: string;
@@ -12,4 +13,5 @@ export type TextInputProps = {
   inputAttributes?: object;
   labelAttributes?: object;
   errorMessageAttributes?: object;
+  optional?: boolean;
 }

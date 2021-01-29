@@ -1,19 +1,37 @@
-.radioSelectOption {
-    padding: 10px;
-    width: fit-content;
-    border-bottom: 1px solid black;
-    input,
-    label {
-        cursor: pointer;
-        &:hover {
-            font-size: 1.1em;
-        }
-    }
-    input {
-        display: none;
-    }
+.radioSelectWrapper {
+    min-height: 63px;
+    display: flex;
+    align-items: center;
 
-    &.selected {
+    p {
+        display: inline-block;
+    }
+    .radioSelectOption {
+        padding: 10px;
+        width: fit-content;
         border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: content-box;
+        min-width: 130px;
+        max-height: 25px;
+
+        input,
+        label {
+            cursor: pointer;
+            &:hover {
+                font-size: 1.1em;
+            }
+        }
+        input {
+            display: none;
+        }
+
+        &.selected {
+            border: 1px solid red;
+        }
     }
 }

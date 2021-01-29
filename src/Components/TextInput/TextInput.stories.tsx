@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Meta, Story } from '@storybook/react'
 import { TextInput } from './index';
 import { TextInputProps } from './TextInput.types.js';
-import { Story } from '@storybook/react';
 import { regexOptions } from '../../resources/regExp';
 
 export default {
@@ -10,11 +10,11 @@ export default {
     argTypes: {
         label: { table: { category: 'Label' } },
         labelAttributes: { table: { category: 'Label' } },
+        componentID: { table: { category: 'Input' } },
         value: {
             table: { category: 'Input' },
             control: 'text',
         },
-        inputID: { table: { category: 'Input' } },
         placeholder: { table: { category: 'Input' } },
         onChangeCallback: { table: { category: 'Input' } },
         inputAttributes: { table: { category: 'Input' } },
@@ -23,11 +23,16 @@ export default {
             control: { type: 'select', options: Object.keys(regexOptions) },
             table: { category: 'Input Validation' }
         },
+
         customRegex: { table: { category: 'Input Validation' } },
+        optional: {
+            table: { category: 'Input Validation' },
+
+        },
         errorMessage: { table: { category: 'Input Validation' } },
         errorMessageAttributes: { table: { category: 'Input Validation' } },
-        containerClassName: { table: { category: 'Other' } }
-        // customRegex: { control: 'text' }
+        containerClassName: { table: { category: 'Other' } },
+        name: { table: { category: "Other" }, control: 'text' }
     },
     parameters: {
         docs: {
@@ -36,14 +41,38 @@ export default {
             }
         }
     }
-};
+} as Meta;
 
 
 const Template: Story<TextInputProps> = (args) => <TextInput {...args} />
 export const Default = Template.bind({})
+Default.args = {
+    componentID: 'textInput'
+}
 
 export const ErrorState = Template.bind({})
 ErrorState.args = {
-    validate: true,
+    value: '123',
+    ...Default.args
 }
 
+export const CustomInput = Template.bind({})
+
+const CustomProps = {
+    children: <span style={{
+        fontSize: '16px',
+        color: 'red',
+        verticalAlign: 'top',
+        margin: '0 0 0 5px'
+    }}>*
+    </span>,
+    componentID: 'email',
+    placeholder: 'Enter email address',
+    label: 'Email:',
+    errorMessage: 'Please enter a valid email address',
+    regexType: 'email',
+    containerClassName: 'customInputWrapper',
+}
+CustomInput.args = {
+    ...CustomProps
+}

@@ -10,5 +10,7 @@ export type RadioSelectProps = {
     optionSelected: string;
     selectCallback: Function;
     containerClassName: string;
+    smartForm: boolean;
+    required: boolean;
 }
 
