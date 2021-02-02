@@ -74,10 +74,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amanofnowords/react-component-library.git"
+    "url": "git+https://github.com/matthew-stanley/react-component-library.git"
   },
   "bugs": {
-    "url": "https://github.com/amanofnowords/react-component-library/issues"
+    "url": "https://github.com/matthew-stanley/react-component-library/issues"
   },
-  "homepage": "https://github.com/amanofnowords/react-component-library#readme"
+  "homepage": "https://github.com/matthew-stanley/react-component-library#readme"
 }
