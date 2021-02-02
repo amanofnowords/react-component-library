@@ -14,12 +14,17 @@ export default {
     component: Form,
     // subcomponents: { TextInput },
     argTypes: {
-        formID: { control: 'text', category: 'Input' },
+        formID: { control: 'text', table: { category: 'Form Props' } },
+        initialFormState: { table: { category: 'Form Props' } },
+        formAttributes: { table: { category: 'Form Props' } },
+        onSubmit: { table: { disable: true } },
+        errorMessage: { table: { category: 'Form Props' } },
+        groupErrors: { table: { category: 'Form Props' } },
         children: { table: { disable: true } }
     },
     parameters: {
         docs: {
-            description: { component: `The Form component is can automatically recognize when a component from the same library is a child of the form & automatically collect the data and run validation on Submit. The default Form is empty with the exception of a the submit button` },
+            description: { component: `The Form component is a customizable component that can automatically recognize when a component from the same library is a child of the form. If the Form recognizes the child components, it will automatically collect the data and run validation on submit. If there are errors, the form will not return any values. If the groupErrors prop is set to true, instead of each component rendering an individual error, the form will display one collective error. The default Form is empty with the exception of the submit button` },
             source: {
                 code: `
                 <Form formID = "personalInformation">
@@ -130,5 +135,5 @@ FormGroupingErrorsTogether.args = {
     }
 }
 
-export const BlankForm: Story<FormPropsType> = (args): JSX.Element => <Form {...args} />
+export const DefaultForm: Story<FormPropsType> = (args): JSX.Element => <Form {...args} />
 

@@ -1,8 +1,6 @@
-
-import {RadioSelect} from './Components/RadioSelect/index'
 import {TextInput} from './Components/TextInput/index';
-
+import {Form} from './Components/Form/index'
 export { 
     TextInput, 
-    RadioSelect, 
+    Form
 }
