@@ -34,9 +34,13 @@ export const isThisValueValid: isThisValueValidType = {
         if(regex !== undefined){
             // Test that value passes regex
             let useRegex; 
-            let regexOptionsKeys = Object.keys(regexOptions)
-            let doesRegexOptionsInclude = regexOptionsKeys.includes(regex);
-            doesRegexOptionsInclude ? useRegex = regexOptions[regex] : useRegex = regex;
+            let regexOptionsKeys: string[] = Object.keys(regexOptions)
+            if(typeof regex === 'string'){
+                let doesRegexOptionsInclude = regexOptionsKeys.includes(regex);
+                doesRegexOptionsInclude ? useRegex = regexOptions[regex] : console.warn('regex option does not exist. Please review')
+            } else {
+                useRegex = regex;
+            }
 
             return useRegex.test(value)
         } else {
@@ -49,12 +53,17 @@ export const isThisValueValid: isThisValueValidType = {
         } else {
             let useRegex; 
             let regexOptionsKeys = Object.keys(regexOptions)
-            let doesRegexOptionsInclude = regexOptionsKeys.includes(regex);
-            doesRegexOptionsInclude ? useRegex = regexOptions[regex] : useRegex = regex;
+             if(typeof regex === 'string'){
+                let doesRegexOptionsInclude = regexOptionsKeys.includes(regex);
+                doesRegexOptionsInclude ? useRegex = regexOptions[regex] : console.warn('regex option does not exist. Please review')
+            } else {
+                useRegex = regex;
+            }
+
             return useRegex.test(value)
         }
     },
-    doesAValueExist: (value: React.ReactText, regex?) => {
+    doesAValueExist: (value: React.ReactText) => {
         if(value === '' || value === undefined || value === null){
             return false
         } else {

@@ -1,3 +1,3 @@
-import { RadioSelect } from './RadioSelect/index';
-import { TextInput } from './TextInput/index';
-export { TextInput, RadioSelect, };
+import { TextInput } from './Components/TextInput/index';
+import { Form } from './Components/Form/index';
+export { TextInput, Form };

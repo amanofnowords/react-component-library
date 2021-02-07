@@ -47,15 +47,18 @@ The Form component is can automatically recognize when a component from the same
     <h3 style="display: inline-block"> Form Props</h3>
 </summary>
 
-| Props          | Type       | Description                                                                                                                                              |
-| -------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| formID         | `String`   | The id for the form element. This is required in order for the Form component to function correctly.                                                     |     | initialFormState | `Object`  | If you are providing initial values for any of the Form component's children, you can pass them in this object. Ex. {formValues: {firstName: "Matthew", lastName: "Stanley", email: "example@test.com"}} |     |
-| formAttributes | `Object`   | If you have any additional html attributes you would like to pass on to the HTML form element within the component, they can be added as an object here. |
-| onSubmit       | `Function` | This function get's called when the user presses submit and if the form does not have any errors.                                                        |     | groupErrors      | `Boolean` | Default: false. If this prop is set to true, all error messages will be grouped into one message that displays at the bottom of the form.                                                                |
-| errorMessage   | `String`   | This is the error message that will display if there is an error within the Form and groupErrors has been set to true.                                   |
+| Props            | Type       | Description                                                                                                                                                                                              |
+| ---------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| formID           | `String`   | The id for the form element. This is required in order for the Form component to function correctly.                                                                                                     |
+| initialFormState | `Object`   | If you are providing initial values for any of the Form component's children, you can pass them in this object. Ex. {formValues: {firstName: "Matthew", lastName: "Stanley", email: "example@test.com"}} |
+| formAttributes   | `Object`   | If you have any additional html attributes you would like to pass on to the HTML form element within the component, they can be added as an object here.                                                 |
+| onSubmit         | `Function` | This function get's called when the user presses submit and if the form does not have any errors.                                                                                                        |
+| groupErrors      | `Boolean`  | Default: false. If this prop is set to true, all error messages will be grouped into one message that displays at the bottom of the form.                                                                |
+| onChangeCallBack | `Function` | You can pass a function here. If you would like a function to be called with the input value's change. An example for this is passing the user input value on to a separate component.                   |
+| errorMessage     | `String`   | This is the error message that will display if there is an error within the Form and groupErrors has been set to true.                                                                                   |
+|                  |
 
 </details>
-
 <hr>
 
 <!-- ### Radio Select

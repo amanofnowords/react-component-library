@@ -11,7 +11,7 @@ test('Input validation renders error message.', () => {
 
     const { getByTestId, queryByTestId } = render(
         <TextInput
-            inputID={inputID}
+            componentID={inputID}
             errorMessage={errorMessage}
             inputAttributes={inputAttributes}
             errorMessageAttributes={errorMessageAttributes}
@@ -35,7 +35,7 @@ test('Input validation not render error message.', () => {
 
     const { getByTestId, queryByTestId } = render(
         <TextInput
-            inputID={inputID}
+            componentID={inputID}
             errorMessage={errorMessage}
             inputAttributes={inputAttributes}
             errorMessageAttributes={errorMessageAttributes}

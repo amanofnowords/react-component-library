@@ -13,7 +13,7 @@ import '../Form/Form.scss'
 
 //Initialize Global Context
 export const GlobalContext = React.createContext({})
-const Reducer = (state: stateType, action: { payload: Object, type: String }): Object => {
+const Reducer = (state: stateType, action: { payload: Object, type: String }): stateType => {
     switch (action.type) {
         case 'UPDATE_STATE':
             return { ...state, ...action.payload }
@@ -43,43 +43,46 @@ export const Form: React.FC<FormPropsType> = ({
 
     // Global Context Work
     const [state, dispatch] = React.useReducer(Reducer, buildState)
-
-
     let updateState: Function = (object: Object): void => {
         dispatch({
             type: 'UPDATE_STATE',
             payload: object
         })
     }
-    const returnRequiredChildrenArray = (): React.ReactNode[] => {
+    const returnRequiredChildrenArray = (): React.ReactElement[] => {
         // Filter For Smart Components
-        let childrenArray: React.ReactNode[] = [];
-
-        const filterChildren = (array: React.ReactNode[], arrayToPushTo: React.ReactNode[]) => {
-            array.forEach((childElement: React.ReactNode): void => {
-                if (typeof childElement === 'object' && (childElement.props.componentID != undefined && childElement.props.optional !== true)) { arrayToPushTo.push(childElement) };
-            })
+        let childrenArray = [];
+        const pullReactElements = (array?: any[]) => {
+            if (array) {
+                return array.filter((child: any) =>
+                    typeof child === 'object' &&
+                    (child.props.componentID != undefined && child.props.optional !== true))
+            } else {
+                return children.filter((child: any) =>
+                    typeof child === 'object' &&
+                    (child.props.componentID != undefined && child.props.optional !== true))
+            }
         }
-
-        if (Array.isArray(children) === true) {
-            filterChildren(children, childrenArray);
+        if (Array.isArray(children)) {
+            childrenArray = pullReactElements()
         } else {
-            let newArray = [children];
-            filterChildren(newArray, childrenArray)
+            childrenArray = pullReactElements([children])
         }
-        return childrenArray;
+
+        return childrenArray
+
     }
 
-    const checkRequiredValues = (childrenArray: React.ReactNode[]) => {
+    const checkRequiredValues = (childrenArray: React.ReactElement[]): boolean => {
 
         /** This object contains key value pairs of required components that are currently undefined.  */
 
         let errorObject: { [key: string]: boolean } = {}
 
 
-        childrenArray.forEach((child: React.ReactNode) => {
+        childrenArray.forEach((child: React.ReactElement) => {
             /** A variable containing either the required component's componentID or groupName */
-            let key = child.props.componentID || child.props.groupName;
+            let key: string = child.props.componentID || child.props.groupName;
 
             // Use the key variable to check state for corresponding key & value. If the key does not return a truthy value then that means the input is empty or componentID / groupName has not been correctly set. 
             if (state.formValues[key] == (undefined || '' || null)) {
@@ -87,7 +90,7 @@ export const Form: React.FC<FormPropsType> = ({
             }
 
         })
-        let newState: stateType = Object.assign({}, { ...errorObject }, { ...state.errors })
+        let newState: Object = Object.assign({}, { ...errorObject }, { ...state.errors })
         updateState({ errors: newState })
 
         const doesStateContainErrors: Function = (): boolean => {
@@ -98,16 +101,15 @@ export const Form: React.FC<FormPropsType> = ({
             }
         }
 
-        if (onSubmit && !doesStateContainErrors()) {
-            onSubmit({ [formID]: state })
-        }
+        return doesStateContainErrors();
+
+
     }
 
     const localOnSubmit: Function = (e: UserEvent): void => {
         e.preventDefault();
-        let requiredChildrenArray: React.ReactNode[] = returnRequiredChildrenArray()
-        if (requiredChildrenArray.length > 0) {
-            checkRequiredValues(requiredChildrenArray)
+        if (onSubmit && !checkRequiredValues(returnRequiredChildrenArray())) {
+            onSubmit({ [formID]: state })
         }
     }
 

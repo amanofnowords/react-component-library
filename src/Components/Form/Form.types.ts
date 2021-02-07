@@ -1,13 +1,13 @@
 type initialFormStateTypes = {
-    formValues?: Object;
+    formValues?: formValues;
 }
 type formValues = {
     [key: string] : string;
 }
 export type FormPropsType = {
     formID: string;
-    formAttributes?: Object,
-    children?: React.ReactChild[]| React.ReactChild;
+    formAttributes?: Object;
+    children?: any | any[];
     initialFormState?: initialFormStateTypes;
     onSubmit?: Function;
     errorMessage?: string;
@@ -16,6 +16,6 @@ export type FormPropsType = {
 }
 export type stateType = {
     errors?: Object;
-    formValues?: Object;
+    formValues?: formValues;
     groupErrors?: boolean;
 }
