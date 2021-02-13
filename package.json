@@ -12,7 +12,8 @@
     "storybook": "start-storybook -p 6006",
     "storybook:docs": "start-storybook --docs",
     "storybook:docs-publish": "build-storybook --docs",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -s public",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "keywords": [
     "rollup",
@@ -33,6 +34,7 @@
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",
     "@storybook/react": "^6.1.11",
+    "@storybook/storybook-deployer": "^2.8.7",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
     "@types/jest": "^26.0.15",
