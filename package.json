@@ -1,6 +1,6 @@
 {
   "name": "@matthew-stanley/react-component-library",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A react component library",
   "main": "./dist/bundle.js",
   "module": "./dist/bundle.esm.js",
