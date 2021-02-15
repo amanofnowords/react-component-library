@@ -1,6 +1,10 @@
 {
   "name": "@matthew-stanley/react-component-library",
+<<<<<<< Updated upstream
   "version": "0.0.2",
+=======
+  "version": "0.0.4",
+>>>>>>> Stashed changes
   "description": "A react component library",
   "main": "./dist/bundle.js",
   "module": "./dist/bundle.esm.js",
