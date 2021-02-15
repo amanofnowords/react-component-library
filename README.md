@@ -10,6 +10,10 @@ A simple Component Library
 
 The Text Input component can be used as quick way to get form text inputs up & running within your project. This component offers validation and comes with built in regular expressions to test the inputted value. It will function on it's own right out the box or can be customized to fit your needs as a developer.
 
+A Demo of the Components can be found at the following link.
+
+[Matthew Stanley - React Component Library](https://matthew-stanley.github.io/react-component-library)
+
 <details>
     <summary>
     <h3 style="display: inline-block"> TextInput Props</h3>
